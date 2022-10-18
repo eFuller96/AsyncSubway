@@ -13,7 +13,7 @@ public class CoffeeMachine : ICoffeeMachine
     {
         Console.WriteLine("Brewing Coffee for 10s...");
         await Task.Delay(10000);
-        Console.WriteLine("Finished brewing");
+        Console.WriteLine("Coffee brewed");
         return new Coffee
         {
             Name = name

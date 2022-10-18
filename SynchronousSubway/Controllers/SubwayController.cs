@@ -8,17 +8,17 @@ namespace SynchronousSubway.Controllers;
 [Route("[controller]")]
 public class SubwayController : ControllerBase
 {
-    private readonly IWorker _ellie;
+    private readonly IWorker _worker;
 
-    public SubwayController(IWorker ellie)
+    public SubwayController(IWorker worker)
     {
-        _ellie = ellie;
+        _worker = worker;
     }
 
     [HttpPost]
     public ActionResult<SubwayOrder> MakeOrder([FromBody] SubwayRequest sandwichRequest)
     {
-        var order = _ellie.MakeOrder(sandwichRequest.SubName, sandwichRequest.Toasted, sandwichRequest.SauceName,
+        var order = _worker.MakeOrder(sandwichRequest.SubName, sandwichRequest.Toasted, sandwichRequest.SauceName,
             sandwichRequest.CoffeeName);
 
         return Ok(order);

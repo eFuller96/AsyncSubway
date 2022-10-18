@@ -10,15 +10,15 @@ public interface IWorker
 
 public class Ellie : IWorker
 {
-    private readonly ICoffeeMachine coffeeMachine;
-    private readonly IToaster toaster;
-    private readonly ISauceBot sauceBot;
+    private readonly ICoffeeMachine _coffeeMachine;
+    private readonly IToaster _toaster;
+    private readonly ISauceBot _sauceBot;
 
     public Ellie(ICoffeeMachine coffeeMachine, IToaster toaster, ISauceBot sauceBot)
     {
-        this.coffeeMachine = coffeeMachine;
-        this.toaster = toaster;
-        this.sauceBot = sauceBot;
+        _coffeeMachine = coffeeMachine;
+        _toaster = toaster;
+        _sauceBot = sauceBot;
     }
 
     public SubwayOrder MakeOrder(string sandwichName, bool toasted, string sauceName,
@@ -26,18 +26,16 @@ public class Ellie : IWorker
     {
         var sandwich = new Sandwich { Name = sandwichName, Sauce = sauceName, Toasted = toasted };
 
-        var toastedSandwich = toaster.Toast(sandwich);
+        var toastedSandwich = _toaster.Toast(sandwich);
         Console.WriteLine("Got toast");
 
-        var coffee = coffeeMachine.MakeCoffee(coffeeName);
+        var coffee = _coffeeMachine.MakeCoffee(coffeeName);
         Console.WriteLine("Got coffee");
 
-        sandwich = sauceBot.SauceUp(toastedSandwich);
+        sandwich = _sauceBot.SauceUp(toastedSandwich);
         Console.WriteLine("Got sauce");
 
-        var order = new SubwayOrder(coffee, sandwich);
-
-        return order;
+        return new SubwayOrder(coffee, sandwich);
     }
     
 }

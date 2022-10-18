@@ -13,7 +13,7 @@ public class Toaster : IToaster
     {
         Console.WriteLine("Toasting for 15s...");
         Task.Delay(15000).Wait();
-        Console.WriteLine("Toasted");
+        Console.WriteLine("Sandwich Toasted");
         return sandwich;
     }
 }

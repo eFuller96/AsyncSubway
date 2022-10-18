@@ -13,7 +13,7 @@ public class SauceBot : ISauceBot
     {
         Console.WriteLine("Adding sauce for 5s...");
         Task.Delay(5000).Wait();
-        Console.WriteLine("Finished Sauceing");
+        Console.WriteLine("Sandwich sauced");
         return sandwich;
     }
 }

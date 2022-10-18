@@ -8,17 +8,17 @@ namespace AsyncSubway.Controllers;
 [Route("[controller]")]
 public class SubwayController : ControllerBase
 {
-    private readonly IWorker _ellie;
+    private readonly IWorker _worker;
 
-    public SubwayController(IWorker ellie)
+    public SubwayController(IWorker worker)
     {
-        _ellie = ellie;
+        _worker = worker;
     }
 
     [HttpPost]
     public async Task<ActionResult<SubwayOrder>> MakeOrder([FromBody] SubwayRequest subwayRequest)
     {
-        var order = await _ellie.MakeOrderAsync(subwayRequest.SubName, subwayRequest.Toasted, subwayRequest.SauceName,
+        var order = await _worker.MakeOrderAsync(subwayRequest.SubName, subwayRequest.Toasted, subwayRequest.SauceName,
             subwayRequest.CoffeeName);
 
         return Ok(order);
