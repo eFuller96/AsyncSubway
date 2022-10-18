@@ -16,10 +16,10 @@ public class SubwayController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<SubwayOrder> MakeOrder([FromBody] SubwayRequest sandwichRequest)
+    public ActionResult<SubwayOrder> MakeOrder([FromBody] SubwayRequest subwayRequest)
     {
-        var order = _worker.MakeOrder(sandwichRequest.SubName, sandwichRequest.Toasted, sandwichRequest.SauceName,
-            sandwichRequest.CoffeeName);
+        var order = _worker.MakeOrder(subwayRequest.SubName, subwayRequest.Toasted, subwayRequest.SauceName,
+            subwayRequest.CoffeeName);
 
         return Ok(order);
     }
